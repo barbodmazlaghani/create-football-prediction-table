@@ -276,6 +276,7 @@ export interface ScoreResult {
   kind:
     | "exact" // 10
     | "outcome-plus-goal" // 7 (one team goal or goal difference exact)
+    | "outcome-plus-penalty" // 7 (non-exact draw + correct shootout winner)
     | "outcome" // 5
     | "penalty-bonus" // +3 bonus (added on top for correct draw + pen winner)
     | "wrong" // 0
@@ -332,15 +333,20 @@ export function scorePrediction(pred: Prediction, match: Match): ScoreResult {
     }
   }
 
-  // Penalty bonus: match went to pens AND you predicted the draw + correct winner
+  // Shootout pick: +2 for a non-exact draw, or +3 only for an exact draw.
   let bonus = 0;
-  if (
+  const correctDrawAndPenaltyWinner =
     match.penalties &&
     predOutcome === "draw" &&
-    pred.penaltyWinner &&
-    pred.penaltyWinner === match.penaltyWinner
-  ) {
-    bonus = 3;
+    pred.penaltyWinner === match.penaltyWinner;
+
+  if (correctDrawAndPenaltyWinner) {
+    if (exact) {
+      bonus = 3;
+    } else {
+      basePoints = 7;
+      kind = "outcome-plus-penalty";
+    }
   }
 
   return { points: basePoints + bonus, kind, basePoints, bonus };

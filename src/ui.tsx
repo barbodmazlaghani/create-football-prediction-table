@@ -45,6 +45,11 @@ export const kindMeta: Record<ScoreResult["kind"], KindMeta> = {
     pill: "bg-teal-400/15 text-teal-300 ring-1 ring-inset ring-teal-400/30",
     dot: "bg-teal-400",
   },
+  "outcome-plus-penalty": {
+    label: "مساوی + برنده پنالتی",
+    pill: "bg-fuchsia-400/15 text-fuchsia-300 ring-1 ring-inset ring-fuchsia-400/30",
+    dot: "bg-fuchsia-400",
+  },
   outcome: {
     label: "فقط نتیجه درست",
     pill: "bg-amber-400/15 text-amber-300 ring-1 ring-inset ring-amber-400/30",
