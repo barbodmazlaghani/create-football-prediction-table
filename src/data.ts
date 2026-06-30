@@ -316,6 +316,7 @@ export function scorePrediction(pred: Prediction, match: Match): ScoreResult {
   const oneTeamExact =
     pred.homeGoals === match.homeGoals || pred.awayGoals === match.awayGoals;
   const goalDifferenceExact =
+    predOutcome !== "draw" &&
     pred.homeGoals - pred.awayGoals === match.homeGoals! - match.awayGoals!;
 
   if (outcomeCorrect) {
