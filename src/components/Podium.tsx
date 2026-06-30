@@ -55,17 +55,23 @@ export default function Podium({ standings }: { standings: PlayerStanding[] }) {
         const st = PODIUM_STYLE[rank];
         const isFirst = rank === 1;
         return (
-          <div key={s.player.name} className={`flex flex-col items-center ${heights[rank]}`}>
+          <div
+            key={s.player.name}
+            className={`flex min-w-0 flex-col items-center ${heights[rank]}`}
+          >
             <div className="mb-2 text-2xl sm:text-3xl">{st.emoji}</div>
             <div
-              className={`rounded-2xl bg-white/5 p-3 text-center ring-1 backdrop-blur transition ${st.ring} shadow-2xl ${st.glow} ${
+              className={`w-full min-w-0 rounded-2xl bg-white/5 p-3 text-center ring-1 backdrop-blur transition ${st.ring} shadow-2xl ${st.glow} ${
                 isFirst ? "sm:-translate-y-2 sm:scale-105" : ""
               }`}
             >
               <div className="mx-auto mb-2 flex justify-center">
                 <Avatar name={s.player.name} size={isFirst ? 56 : 46} />
               </div>
-              <div className="truncate text-[13px] font-bold text-slate-100 sm:text-sm">
+              <div
+                className="w-full min-w-0 truncate text-[13px] font-bold text-slate-100 sm:text-sm"
+                title={s.player.name}
+              >
                 {s.player.name}
               </div>
               <div className={`text-2xl font-extrabold tabular-nums sm:text-3xl ${st.medal}`}>
