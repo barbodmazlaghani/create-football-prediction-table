@@ -44,6 +44,16 @@ const NED: Team = { name: "Netherlands", fa: "هلند", flag: "🇳🇱" };
 const MAR: Team = { name: "Morocco", fa: "مراکش", flag: "🇲🇦" };
 const CIV: Team = { name: "Ivory Coast", fa: "ساحل عاج", flag: "🇨🇮" };
 const NOR: Team = { name: "Norway", fa: "نروژ", flag: "🇳🇴" };
+const FRA: Team = { name: "France", fa: "فرانسه", flag: "🇫🇷" };
+const SWE: Team = { name: "Sweden", fa: "سوئد", flag: "🇸🇪" };
+const MEX: Team = { name: "Mexico", fa: "مکزیک", flag: "🇲🇽" };
+const ECU: Team = { name: "Ecuador", fa: "اکوادور", flag: "🇪🇨" };
+const ENG: Team = { name: "England", fa: "انگلیس", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿" };
+const COD: Team = { name: "DR Congo", fa: "کنگو", flag: "🇨🇩" };
+const BEL: Team = { name: "Belgium", fa: "بلژیک", flag: "🇧🇪" };
+const SEN: Team = { name: "Senegal", fa: "سنگال", flag: "🇸🇳" };
+const USA: Team = { name: "USA", fa: "آمریکا", flag: "🇺🇸" };
+const BIH: Team = { name: "Bosnia and Herzegovina", fa: "بوسنی", flag: "🇧🇦" };
 
 /* ----------------------------- MATCHES ----------------------------- */
 
@@ -85,10 +95,51 @@ export const matches: Match[] = [
   },
   {
     id: "civ-nor",
-    stage: "Round of 16",
-    stageFa: "یک‌هشتم نهایی",
+    stage: "Round of 32",
+    stageFa: "یک‌شانزدهم نهایی",
     home: CIV,
     away: NOR,
+    homeGoals: 1,
+    awayGoals: 2,
+  },
+  {
+    id: "fra-swe",
+    stage: "Round of 32",
+    stageFa: "یک‌شانزدهم نهایی",
+    home: FRA,
+    away: SWE,
+    pending: true,
+  },
+  {
+    id: "mex-ecu",
+    stage: "Round of 32",
+    stageFa: "یک‌شانزدهم نهایی",
+    home: MEX,
+    away: ECU,
+    pending: true,
+  },
+  {
+    id: "eng-cod",
+    stage: "Round of 32",
+    stageFa: "یک‌شانزدهم نهایی",
+    home: ENG,
+    away: COD,
+    pending: true,
+  },
+  {
+    id: "bel-sen",
+    stage: "Round of 32",
+    stageFa: "یک‌شانزدهم نهایی",
+    home: BEL,
+    away: SEN,
+    pending: true,
+  },
+  {
+    id: "usa-bih",
+    stage: "Round of 32",
+    stageFa: "یک‌شانزدهم نهایی",
+    home: USA,
+    away: BIH,
     pending: true,
   },
 ];
@@ -100,6 +151,12 @@ export const players: Player[] = [
     name: "Barbod",
     predictions: {
       "jpn-bra": { homeGoals: 3, awayGoals: 2 },
+      "civ-nor": { homeGoals: 1, awayGoals: 2 },
+      "fra-swe": { homeGoals: 3, awayGoals: 0 },
+      "mex-ecu": { homeGoals: 1, awayGoals: 2 },
+      "eng-cod": { homeGoals: 3, awayGoals: 0 },
+      "bel-sen": { homeGoals: 2, awayGoals: 2, penaltyWinner: "home" },
+      "usa-bih": { homeGoals: 2, awayGoals: 0 },
     },
   },
   {
@@ -108,6 +165,8 @@ export const players: Player[] = [
       "jpn-bra": { homeGoals: 1, awayGoals: 2 }, // Bra 2 - Jpn 1  ✅ exact
       "ger-par": { homeGoals: 3, awayGoals: 0 }, // Ger 3 - Par 0
       "ned-mar": { homeGoals: 1, awayGoals: 2 }, // Mar 2 - Ned 1
+      "fra-swe": { homeGoals: 3, awayGoals: 1 },
+      "mex-ecu": { homeGoals: 2, awayGoals: 1 },
     },
   },
   {
@@ -117,6 +176,8 @@ export const players: Player[] = [
       "ger-par": { homeGoals: 0, awayGoals: 2 }, // Par 2 - Ger 0
       "ned-mar": { homeGoals: 1, awayGoals: 3 }, // Mar 3 - Ned 1
       "civ-nor": { homeGoals: 3, awayGoals: 0 }, // CIV 3 - Nor 0
+      "fra-swe": { homeGoals: 4, awayGoals: 0 },
+      "mex-ecu": { homeGoals: 1, awayGoals: 0 },
     },
   },
   {
@@ -126,6 +187,8 @@ export const players: Player[] = [
       "ger-par": { homeGoals: 4, awayGoals: 0 }, // Ger 4 - Par 0
       "ned-mar": { homeGoals: 3, awayGoals: 2 }, // Ned 3 - Mar 2
       "civ-nor": { homeGoals: 0, awayGoals: 3 }, // Nor 3 - CIV 0
+      "fra-swe": { homeGoals: 4, awayGoals: 1 },
+      "mex-ecu": { homeGoals: 2, awayGoals: 1 },
     },
   },
   {
@@ -148,6 +211,10 @@ export const players: Player[] = [
       "ger-par": { homeGoals: 3, awayGoals: 1 }, // Ger 3 - Par 1
       "ned-mar": { homeGoals: 2, awayGoals: 2, penaltyWinner: "home" }, // 2-2, Ned pens
       "civ-nor": { homeGoals: 1, awayGoals: 3 }, // Nor 3 - CIV 1
+      "fra-swe": { homeGoals: 4, awayGoals: 2 },
+      "mex-ecu": { homeGoals: 1, awayGoals: 2 },
+      "eng-cod": { homeGoals: 4, awayGoals: 1 },
+      "bel-sen": { homeGoals: 2, awayGoals: 1 },
     },
   },
   {
@@ -163,6 +230,9 @@ export const players: Player[] = [
     name: "Samyar",
     predictions: {
       "jpn-bra": { homeGoals: 2, awayGoals: 1 }, // Jpn 2 - Bra 1
+      "civ-nor": { homeGoals: 1, awayGoals: 2 },
+      "fra-swe": { homeGoals: 3, awayGoals: 0 },
+      "mex-ecu": { homeGoals: 1, awayGoals: 1, penaltyWinner: "home" },
     },
   },
   {
@@ -172,6 +242,8 @@ export const players: Player[] = [
       "ger-par": { homeGoals: 3, awayGoals: 0 }, // Ger 3 - Par 0
       "ned-mar": { homeGoals: 2, awayGoals: 1 }, // Ned 2 - Mar 1
       "civ-nor": { homeGoals: 1, awayGoals: 3 }, // Nor 3 - CIV 1
+      "fra-swe": { homeGoals: 3, awayGoals: 1 },
+      "mex-ecu": { homeGoals: 2, awayGoals: 1 },
     },
   },
   {
@@ -181,6 +253,10 @@ export const players: Player[] = [
       "ger-par": { homeGoals: 2, awayGoals: 0 }, // Ger 2 - Par 0
       "ned-mar": { homeGoals: 1, awayGoals: 1, penaltyWinner: "away" }, // 1-1, Mar pens ✅
       "civ-nor": { homeGoals: 0, awayGoals: 1 }, // Nor 1 - CIV 0
+      "fra-swe": { homeGoals: 2, awayGoals: 0 },
+      "mex-ecu": { homeGoals: 0, awayGoals: 0, penaltyWinner: "home" },
+      "eng-cod": { homeGoals: 3, awayGoals: 1 },
+      "bel-sen": { homeGoals: 1, awayGoals: 2 },
     },
   },
 ];
@@ -296,13 +372,13 @@ export function buildStandings(): PlayerStanding[] {
       const res = scorePrediction(pred, match);
       results[match.id] = res;
       total += res.points;
-      // pending match could still yield up to 10 (plus a 3-pt penalty bonus)
+      // A pending prediction can earn 10, plus 3 when it includes a shootout pick.
       if (res.kind === "pending") {
-        maxPossible += 13;
+        maxPossible += 10 + (pred.penaltyWinner ? 3 : 0);
       } else {
         maxPossible += res.points;
       }
-      if (res.basePoints === 3) exactCount += 1;
+      if (res.basePoints === 10) exactCount += 1;
       if (res.basePoints >= 1) outcomeCount += 1;
       if (res.bonus > 0) bonusCount += 1;
     }

@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 import { buildStandings, matches, players } from "./data";
-import { Avatar, faNum } from "./ui";
+import { faNum } from "./ui";
 import heroImage from "./assets/hero.jpg";
 import Podium from "./components/Podium";
 import Standings from "./components/Standings";
 import MatchBreakdown from "./components/MatchBreakdown";
+import PendingMatch from "./components/PendingMatch";
 
 const RULES = [
   {
@@ -65,6 +66,8 @@ function SectionTitle({
 export default function App() {
   const standings = buildStandings();
   const finished = matches.filter((m) => !m.pending);
+  const pending = matches.filter((m) => m.pending);
+  const latestFinished = finished[finished.length - 1];
 
   const leader = standings[0];
   const totalPoints = standings.reduce((s, x) => s + x.total, 0);
@@ -111,8 +114,8 @@ export default function App() {
               </span>
             </h1>
             <p className="mt-3 max-w-xl text-sm text-slate-300 sm:text-base">
-              مرحله یک‌هشتم نهایی — امتیاز هر بازی بر اساس حدس نتیجه، گل‌ها و بونوس
-              پنالتی محاسبه می‌شود. جدول کامل، تفکیک هر بازی و قوانین امتیازدهی.
+              مرحله حذفی — امتیاز هر بازی بر اساس حدس نتیجه، گل‌ها و بونوس پنالتی
+              محاسبه می‌شود. جدول کامل، تفکیک هر بازی و قوانین امتیازدهی.
             </p>
           </div>
         </header>
@@ -147,14 +150,16 @@ export default function App() {
 
         {/* STANDINGS TABLE */}
         <section className="mb-12">
-          <SectionTitle hint="۳ بازی ثبت‌شده · ۱ بازی در انتظار">
+          <SectionTitle
+            hint={`${faNum(finished.length)} بازی ثبت‌شده · ${faNum(pending.length)} بازی در انتظار`}
+          >
             جدول رده‌بندی کامل
           </SectionTitle>
           <Standings standings={standings} finishedMatches={finished} />
           <p className="mt-3 text-center text-[11px] leading-relaxed text-slate-500">
             عدد زیر هر ستون، نتیجه واقعی آن بازی است. هر خانه نتیجه پیش‌بینی‌شده و
-            امتیاز کسب‌شده‌ی شما را نشان می‌دهد. بازی «ساحل عاج ⨯ نروژ» هنوز
-            برگزار نشده و می‌تواند امتیازها را تغییر دهد.
+            امتیاز کسب‌شده‌ی شما را نشان می‌دهد. بازی‌های در انتظار می‌توانند
+            امتیازها و رتبه‌ها را تغییر دهند.
           </p>
         </section>
 
@@ -168,52 +173,19 @@ export default function App() {
           </div>
         </section>
 
-        {/* PENDING MATCH */}
-        <section className="mb-12">
-          <SectionTitle hint="در انتظار برگزاری">بازی پیش‌رو</SectionTitle>
-          <div className="overflow-hidden rounded-2xl border border-dashed border-white/15 bg-white/[0.02]">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 bg-white/[0.02] p-4">
-              <div className="flex items-center gap-4">
-                <div className="flex flex-col items-center">
-                  <span className="text-3xl">🇨🇮</span>
-                  <span className="mt-1 text-sm font-semibold text-slate-200">
-                    Ivory Coast
-                  </span>
-                  <span className="text-[10px] text-slate-500">ساحل عاج</span>
-                </div>
-                <span className="text-xl font-black text-slate-600">⨯</span>
-                <div className="flex flex-col items-center">
-                  <span className="text-3xl">🇳🇴</span>
-                  <span className="mt-1 text-sm font-semibold text-slate-200">
-                    Norway
-                  </span>
-                  <span className="text-[10px] text-slate-500">نروژ</span>
-                </div>
-              </div>
-              <span className="rounded-full bg-amber-400/15 px-3 py-1 text-xs font-bold text-amber-300">
-                ⏳ در انتظار
-              </span>
+        {/* PENDING MATCHES */}
+        {pending.length > 0 && (
+          <section className="mb-12">
+            <SectionTitle hint={`${faNum(pending.length)} بازی در انتظار`}>
+              بازی‌های پیش‌رو
+            </SectionTitle>
+            <div className="space-y-5">
+              {pending.map((match) => (
+                <PendingMatch key={match.id} match={match} />
+              ))}
             </div>
-            <div className="grid grid-cols-1 divide-y divide-white/5 sm:grid-cols-2 sm:divide-y-0 sm:[&>*:nth-child(odd)]:border-l sm:[&>*:nth-child(odd)]:border-white/5">
-              {players
-                .filter((p) => p.predictions["civ-nor"])
-                .map((p) => {
-                  const pred = p.predictions["civ-nor"];
-                  return (
-                    <div key={p.name} className="flex items-center gap-3 p-3.5">
-                      <Avatar name={p.name} size={32} />
-                      <span className="flex-1 truncate text-sm font-semibold text-slate-200">
-                        {p.name}
-                      </span>
-                      <span className="rounded-md bg-white/5 px-2.5 py-1 text-sm font-bold tabular-nums text-slate-200">
-                        {faNum(pred.homeGoals)} - {faNum(pred.awayGoals)}
-                      </span>
-                    </div>
-                  );
-                })}
-            </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* RULES */}
         <section className="mb-8">
@@ -247,8 +219,8 @@ export default function App() {
         {/* FOOTER */}
         <footer className="border-t border-white/10 pt-6 text-center">
           <p className="text-xs text-slate-500">
-            ساخته‌شده برای گروه دوستانه پیش‌بینی فوتبال · نتایج تا پایان بازی
-            «هلند ⨯ مراکش» لحاظ شده است.
+            ساخته‌شده برای گروه دوستانه پیش‌بینی فوتبال · نتایج تا پایان بازی «
+            {latestFinished?.home.fa} ⨯ {latestFinished?.away.fa}» لحاظ شده است.
           </p>
           <p className="mt-1 text-[11px] text-slate-600">
             امتیازدهی بر اساس قوانین رسمی گروه · {faNum(players.length)} بازیکن ·{" "}
