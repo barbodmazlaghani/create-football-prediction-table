@@ -41,7 +41,7 @@ export const kindMeta: Record<ScoreResult["kind"], KindMeta> = {
     dot: "bg-emerald-400",
   },
   "outcome-plus-goal": {
-    label: "نتیجه + گل دقیق",
+    label: "نتیجه + گل/تفاضل دقیق",
     pill: "bg-teal-400/15 text-teal-300 ring-1 ring-inset ring-teal-400/30",
     dot: "bg-teal-400",
   },

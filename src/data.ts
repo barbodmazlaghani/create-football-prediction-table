@@ -275,7 +275,7 @@ export interface ScoreResult {
   /** how the points were earned */
   kind:
     | "exact" // 10
-    | "outcome-plus-goal" // 7
+    | "outcome-plus-goal" // 7 (one team goal or goal difference exact)
     | "outcome" // 5
     | "penalty-bonus" // +3 bonus (added on top for correct draw + pen winner)
     | "wrong" // 0
@@ -311,17 +311,18 @@ export function scorePrediction(pred: Prediction, match: Match): ScoreResult {
 
   let basePoints = 0;
   let kind: ScoreResult["kind"] = "wrong";
+  const exact =
+    pred.homeGoals === match.homeGoals && pred.awayGoals === match.awayGoals;
+  const oneTeamExact =
+    pred.homeGoals === match.homeGoals || pred.awayGoals === match.awayGoals;
+  const goalDifferenceExact =
+    pred.homeGoals - pred.awayGoals === match.homeGoals! - match.awayGoals!;
 
   if (outcomeCorrect) {
-    const exact =
-      pred.homeGoals === match.homeGoals && pred.awayGoals === match.awayGoals;
-    const oneTeamExact =
-      pred.homeGoals === match.homeGoals || pred.awayGoals === match.awayGoals;
-
     if (exact) {
       basePoints = 10;
       kind = "exact";
-    } else if (oneTeamExact) {
+    } else if (oneTeamExact || goalDifferenceExact) {
       basePoints = 7;
       kind = "outcome-plus-goal";
     } else {
@@ -379,7 +380,7 @@ export function buildStandings(): PlayerStanding[] {
         maxPossible += res.points;
       }
       if (res.basePoints === 10) exactCount += 1;
-      if (res.basePoints >= 1) outcomeCount += 1;
+      if (res.basePoints >= 5) outcomeCount += 1;
       if (res.bonus > 0) bonusCount += 1;
     }
 
