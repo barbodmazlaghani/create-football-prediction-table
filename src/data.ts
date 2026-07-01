@@ -324,7 +324,12 @@ export function scorePrediction(pred: Prediction, match: Match): ScoreResult {
     }
   } else {
     const actualOutcome = outcomeOf(match.homeGoals, match.awayGoals)!;
-    outcomeCorrect = predOutcome === actualOutcome;
+    // A shootout pick made alongside a draw is also a pick for the team
+    // to advance, even when that team wins before a shootout is needed.
+    outcomeCorrect =
+      predOutcome === "draw" && pred.penaltyWinner && actualOutcome !== "draw"
+        ? pred.penaltyWinner === actualOutcome
+        : predOutcome === actualOutcome;
   }
 
   let basePoints = 0;
