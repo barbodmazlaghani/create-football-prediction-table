@@ -135,7 +135,8 @@ export const matches: Match[] = [
     stageFa: "یک‌شانزدهم نهایی",
     home: BEL,
     away: SEN,
-    pending: true,
+    homeGoals: 3,
+    awayGoals: 2,
   },
   {
     id: "usa-bih",
@@ -170,6 +171,8 @@ export const players: Player[] = [
       "ned-mar": { homeGoals: 1, awayGoals: 2 }, // Mar 2 - Ned 1
       "fra-swe": { homeGoals: 3, awayGoals: 1 },
       "mex-ecu": { homeGoals: 2, awayGoals: 1 },
+      "bel-sen": { homeGoals: 2, awayGoals: 1 },
+      "usa-bih": { homeGoals: 3, awayGoals: 1 },
     },
   },
   {
@@ -223,6 +226,7 @@ export const players: Player[] = [
       "mex-ecu": { homeGoals: 1, awayGoals: 2 },
       "eng-cod": { homeGoals: 4, awayGoals: 1 },
       "bel-sen": { homeGoals: 2, awayGoals: 1 },
+      "usa-bih": { homeGoals: 2, awayGoals: 1 },
     },
   },
   {
@@ -247,6 +251,7 @@ export const players: Player[] = [
       "mex-ecu": { homeGoals: 1, awayGoals: 1, penaltyWinner: "home" },
       "eng-cod": { homeGoals: 2, awayGoals: 1 },
       "bel-sen": { homeGoals: 1, awayGoals: 1, penaltyWinner: "away" },
+      "usa-bih": { homeGoals: 2, awayGoals: 1 },
     },
   },
   {
@@ -274,6 +279,7 @@ export const players: Player[] = [
       "mex-ecu": { homeGoals: 0, awayGoals: 0, penaltyWinner: "home" },
       "eng-cod": { homeGoals: 3, awayGoals: 1 },
       "bel-sen": { homeGoals: 1, awayGoals: 2 },
+      "usa-bih": { homeGoals: 2, awayGoals: 2, penaltyWinner: "home" },
     },
   },
 ];
