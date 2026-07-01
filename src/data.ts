@@ -117,7 +117,8 @@ export const matches: Match[] = [
     stageFa: "یک‌شانزدهم نهایی",
     home: MEX,
     away: ECU,
-    pending: true,
+    homeGoals: 2,
+    awayGoals: 0,
   },
   {
     id: "eng-cod",
@@ -125,7 +126,8 @@ export const matches: Match[] = [
     stageFa: "یک‌شانزدهم نهایی",
     home: ENG,
     away: COD,
-    pending: true,
+    homeGoals: 2,
+    awayGoals: 1,
   },
   {
     id: "bel-sen",
@@ -179,6 +181,8 @@ export const players: Player[] = [
       "civ-nor": { homeGoals: 3, awayGoals: 0 }, // CIV 3 - Nor 0
       "fra-swe": { homeGoals: 4, awayGoals: 0 },
       "mex-ecu": { homeGoals: 1, awayGoals: 0 },
+      "eng-cod": { homeGoals: 2, awayGoals: 0 },
+      "bel-sen": { homeGoals: 1, awayGoals: 1, penaltyWinner: "home" },
     },
   },
   {
@@ -190,6 +194,9 @@ export const players: Player[] = [
       "civ-nor": { homeGoals: 0, awayGoals: 3 }, // Nor 3 - CIV 0
       "fra-swe": { homeGoals: 4, awayGoals: 1 },
       "mex-ecu": { homeGoals: 2, awayGoals: 1 },
+      "eng-cod": { homeGoals: 2, awayGoals: 0 },
+      "bel-sen": { homeGoals: 1, awayGoals: 2 },
+      "usa-bih": { homeGoals: 3, awayGoals: 1 },
     },
   },
   {
@@ -251,6 +258,9 @@ export const players: Player[] = [
       "civ-nor": { homeGoals: 1, awayGoals: 3 }, // Nor 3 - CIV 1
       "fra-swe": { homeGoals: 3, awayGoals: 1 },
       "mex-ecu": { homeGoals: 2, awayGoals: 1 },
+      "eng-cod": { homeGoals: 2, awayGoals: 0 },
+      "bel-sen": { homeGoals: 2, awayGoals: 1 },
+      "usa-bih": { homeGoals: 2, awayGoals: 1 },
     },
   },
   {
