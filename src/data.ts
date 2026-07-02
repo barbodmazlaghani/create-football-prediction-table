@@ -224,6 +224,7 @@ export const players: Player[] = [
       "mex-ecu": { homeGoals: 1, awayGoals: 0 },
       "eng-cod": { homeGoals: 2, awayGoals: 0 },
       "bel-sen": { homeGoals: 1, awayGoals: 1, penaltyWinner: "home" },
+      "usa-bih": { homeGoals: 0, awayGoals: 1 },
       "esp-aut": { homeGoals: 1, awayGoals: 1, penaltyWinner: "home" },
       "por-cro": { homeGoals: 3, awayGoals: 1 },
       "sui-alg": { homeGoals: 1, awayGoals: 1, penaltyWinner: "away" },
