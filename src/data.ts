@@ -60,6 +60,12 @@ const POR: Team = { name: "Portugal", fa: "پرتغال", flag: "🇵🇹" };
 const CRO: Team = { name: "Croatia", fa: "کرواسی", flag: "🇭🇷" };
 const SUI: Team = { name: "Switzerland", fa: "سوییس", flag: "🇨🇭" };
 const ALG: Team = { name: "Algeria", fa: "الجزایر", flag: "🇩🇿" };
+const AUS: Team = { name: "Australia", fa: "استرالیا", flag: "🇦🇺" };
+const EGY: Team = { name: "Egypt", fa: "مصر", flag: "🇪🇬" };
+const ARG: Team = { name: "Argentina", fa: "آرژانتین", flag: "🇦🇷" };
+const CPV: Team = { name: "Cabo Verde", fa: "کیپ ورد", flag: "🇨🇻" };
+const COL: Team = { name: "Colombia", fa: "کلمبیا", flag: "🇨🇴" };
+const GHA: Team = { name: "Ghana", fa: "غنا", flag: "🇬🇭" };
 
 /* ----------------------------- MATCHES ----------------------------- */
 
@@ -168,7 +174,8 @@ export const matches: Match[] = [
     stageFa: "یک‌شانزدهم نهایی",
     home: POR,
     away: CRO,
-    pending: true,
+    homeGoals: 2,
+    awayGoals: 1,
   },
   {
     id: "sui-alg",
@@ -176,6 +183,36 @@ export const matches: Match[] = [
     stageFa: "یک‌شانزدهم نهایی",
     home: SUI,
     away: ALG,
+    homeGoals: 2,
+    awayGoals: 0,
+  },
+  {
+    id: "aus-egy",
+    stage: "Round of 32",
+    stageFa: "یک‌شانزدهم نهایی",
+    home: AUS,
+    away: EGY,
+    homeGoals: 1,
+    awayGoals: 1,
+    penalties: true,
+    homePen: 2,
+    awayPen: 4,
+    penaltyWinner: "away",
+  },
+  {
+    id: "arg-cpv",
+    stage: "Round of 32",
+    stageFa: "یک‌شانزدهم نهایی",
+    home: ARG,
+    away: CPV,
+    pending: true,
+  },
+  {
+    id: "col-gha",
+    stage: "Round of 32",
+    stageFa: "یک‌شانزدهم نهایی",
+    home: COL,
+    away: GHA,
     pending: true,
   },
 ];
@@ -196,6 +233,9 @@ export const players: Player[] = [
       "esp-aut": { homeGoals: 3, awayGoals: 1 },
       "por-cro": { homeGoals: 2, awayGoals: 1 },
       "sui-alg": { homeGoals: 1, awayGoals: 1, penaltyWinner: "home" },
+      "aus-egy": { homeGoals: 1, awayGoals: 2 },
+      "arg-cpv": { homeGoals: 3, awayGoals: 0 },
+      "col-gha": { homeGoals: 1, awayGoals: 1, penaltyWinner: "away" },
     },
   },
   {
@@ -211,6 +251,8 @@ export const players: Player[] = [
       "esp-aut": { homeGoals: 2, awayGoals: 1 },
       "por-cro": { homeGoals: 3, awayGoals: 1 },
       "sui-alg": { homeGoals: 2, awayGoals: 1 },
+      "arg-cpv": { homeGoals: 2, awayGoals: 0 },
+      "col-gha": { homeGoals: 3, awayGoals: 1 },
     },
   },
   {
@@ -228,6 +270,9 @@ export const players: Player[] = [
       "esp-aut": { homeGoals: 1, awayGoals: 1, penaltyWinner: "home" },
       "por-cro": { homeGoals: 3, awayGoals: 1 },
       "sui-alg": { homeGoals: 1, awayGoals: 1, penaltyWinner: "away" },
+      "aus-egy": { homeGoals: 2, awayGoals: 1 },
+      "arg-cpv": { homeGoals: 0, awayGoals: 1 },
+      "col-gha": { homeGoals: 1, awayGoals: 1, penaltyWinner: "home" },
     },
   },
   {
@@ -245,6 +290,9 @@ export const players: Player[] = [
       "esp-aut": { homeGoals: 2, awayGoals: 0 },
       "por-cro": { homeGoals: 1, awayGoals: 1 },
       "sui-alg": { homeGoals: 2, awayGoals: 0 },
+      "aus-egy": { homeGoals: 1, awayGoals: 1, penaltyWinner: "home" },
+      "arg-cpv": { homeGoals: 3, awayGoals: 0 },
+      "col-gha": { homeGoals: 2, awayGoals: 1 },
     },
   },
   {
@@ -275,6 +323,9 @@ export const players: Player[] = [
       "esp-aut": { homeGoals: 2, awayGoals: 0 },
       "por-cro": { homeGoals: 2, awayGoals: 1 },
       "sui-alg": { homeGoals: 2, awayGoals: 1 },
+      "aus-egy": { homeGoals: 2, awayGoals: 1 },
+      "arg-cpv": { homeGoals: 2, awayGoals: 0 },
+      "col-gha": { homeGoals: 2, awayGoals: 1 },
     },
   },
   {
@@ -292,6 +343,9 @@ export const players: Player[] = [
       "esp-aut": { homeGoals: 1, awayGoals: 0 },
       "por-cro": { homeGoals: 2, awayGoals: 2, penaltyWinner: "home" },
       "sui-alg": { homeGoals: 3, awayGoals: 1 },
+      "aus-egy": { homeGoals: 2, awayGoals: 1 },
+      "arg-cpv": { homeGoals: 1, awayGoals: 2 },
+      "col-gha": { homeGoals: 2, awayGoals: 0 },
     },
   },
   {
@@ -307,6 +361,9 @@ export const players: Player[] = [
       "esp-aut": { homeGoals: 3, awayGoals: 0 },
       "por-cro": { homeGoals: 1, awayGoals: 1, penaltyWinner: "away" },
       "sui-alg": { homeGoals: 1, awayGoals: 0 },
+      "aus-egy": { homeGoals: 2, awayGoals: 0 },
+      "arg-cpv": { homeGoals: 2, awayGoals: 0 },
+      "col-gha": { homeGoals: 3, awayGoals: 0 },
     },
   },
   {
@@ -324,6 +381,9 @@ export const players: Player[] = [
       "esp-aut": { homeGoals: 2, awayGoals: 0 },
       "por-cro": { homeGoals: 2, awayGoals: 1 },
       "sui-alg": { homeGoals: 2, awayGoals: 1 },
+      "aus-egy": { homeGoals: 1, awayGoals: 2 },
+      "arg-cpv": { homeGoals: 2, awayGoals: 0 },
+      "col-gha": { homeGoals: 2, awayGoals: 1 },
     },
   },
   {
@@ -341,6 +401,9 @@ export const players: Player[] = [
       "esp-aut": { homeGoals: 2, awayGoals: 0 },
       "por-cro": { homeGoals: 2, awayGoals: 0 },
       "sui-alg": { homeGoals: 3, awayGoals: 1 },
+      "aus-egy": { homeGoals: 0, awayGoals: 2 },
+      "arg-cpv": { homeGoals: 2, awayGoals: 0 },
+      "col-gha": { homeGoals: 2, awayGoals: 0 },
     },
   },
 ];
