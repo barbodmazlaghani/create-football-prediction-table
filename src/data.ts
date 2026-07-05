@@ -242,7 +242,8 @@ export const matches: Match[] = [
     stageFa: "یک‌هشتم نهایی",
     home: BRA,
     away: NOR,
-    pending: true,
+    homeGoals: 1,
+    awayGoals: 2,
   },
   {
     id: "mex-eng",
@@ -427,7 +428,7 @@ export const players: Player[] = [
       "col-gha": { homeGoals: 3, awayGoals: 0 },
       "can-mar": { homeGoals: 1, awayGoals: 3 },
       "par-fra": { homeGoals: 0, awayGoals: 3 },
-      "bra-nor": { homeGoals: 3, awayGoals: 2 },
+      "bra-nor": { homeGoals: 2, awayGoals: 2, penaltyWinner: "away" },
       "mex-eng": { homeGoals: 1, awayGoals: 1, penaltyWinner: "home" },
     },
   },
@@ -476,7 +477,7 @@ export const players: Player[] = [
       "can-mar": { homeGoals: 0, awayGoals: 2 },
       "par-fra": { homeGoals: 0, awayGoals: 2 },
       "bra-nor": { homeGoals: 2, awayGoals: 1 },
-      "mex-eng": { homeGoals: 1, awayGoals: 1, penaltyWinner: "home" },
+      "mex-eng": { homeGoals: 1, awayGoals: 3 },
     },
   },
 ];
